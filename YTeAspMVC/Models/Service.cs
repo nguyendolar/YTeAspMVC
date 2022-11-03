@@ -24,7 +24,7 @@ namespace YTeAspMVC.Models
 
         public int Price { get; set; }
 
-        public int Created { get; set; }
+        public string Created { get; set; }
 
         public int Status { get; set; }
     }

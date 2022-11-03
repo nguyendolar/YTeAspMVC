@@ -28,85 +28,36 @@
 <section id="blog-area" class="blog-default-area">
     <div class="container">
         <div class="row">
-            <!--Start single blog post-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-blog-post">
-                    <div class="img-holder">
-                        <img src="~/Content/images/blog/v1-9.jpg" alt="Awesome Image">
-                        <div class="categorie-button">
-                            <a class="btn-one" href="#">Dịch vụ</a>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-box">
-                            <div class="author-thumb">
-                                <img src="~/Content/images/blog/author-1.png" alt="Image">
+            @foreach (var service in ViewBag.List)
+            {
+                <!--Start single blog post-->
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                    <div class="single-blog-post">
+                        <div class="img-holder">
+                            <img src="~/Content/images/@service.Image" style="height : 250px !important" alt="Awesome Image">
+                            <div class="categorie-button">
+                                <a class="btn-one" href="#">Dịch vụ</a>
                             </div>
-                            <ul class="meta-info">
-                                <li><a href="#">Đăng bởi quản trị</a></li>
-                                <li><a href="#">11-10-2022</a></li>
-                            </ul>
                         </div>
-                        <h3 class="blog-title"><a href="blog-single.html">Dịch vụ khám bệnh miễn phí</a></h3>
-                        <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Xem thêm</a>
+                        <div class="text-holder">
+                            <div class="meta-box">
+                                <div class="author-thumb">
+                                    <img src="https://cdn2.iconfinder.com/data/icons/user-avatars-3/100/Doctor-512.png" alt="Image">
+                                </div>
+                                <ul class="meta-info">
+                                    <li><a href="#">Đăng bởi quản trị viên</a></li>
+                                    <li><a href="#">@String.Format("{0:dd-MM-yyyy}", service.Created)</a></li>
+                                </ul>
+                            </div>
+                            <h3 class="blog-title"><a href="">@service.Name</a></h3>
+                            <div class="readmore-button">
+                                <a class="btn-two" href="#"><span class="flaticon-next"></span>Xem thêm</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!--End single blog post-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-blog-post">
-                    <div class="img-holder">
-                        <img src="~/Content/images/blog/v1-9.jpg" alt="Awesome Image">
-                        <div class="categorie-button">
-                            <a class="btn-one" href="#">Dịch vụ</a>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-box">
-                            <div class="author-thumb">
-                                <img src="~/Content/images/blog/author-1.png" alt="Image">
-                            </div>
-                            <ul class="meta-info">
-                                <li><a href="#">Đăng bởi quản trị</a></li>
-                                <li><a href="#">11-10-2022</a></li>
-                            </ul>
-                        </div>
-                        <h3 class="blog-title"><a href="blog-single.html">Dịch vụ khám bệnh miễn phí</a></h3>
-                        <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Xem thêm</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-blog-post">
-                    <div class="img-holder">
-                        <img src="~/Content/images/blog/v1-9.jpg" alt="Awesome Image">
-                        <div class="categorie-button">
-                            <a class="btn-one" href="#">Dịch vụ</a>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-box">
-                            <div class="author-thumb">
-                                <img src="~/Content/images/blog/author-1.png" alt="Image">
-                            </div>
-                            <ul class="meta-info">
-                                <li><a href="#">Đăng bởi quản trị</a></li>
-                                <li><a href="#">11-10-2022</a></li>
-                            </ul>
-                        </div>
-                        <h3 class="blog-title"><a href="blog-single.html">Dịch vụ khám bệnh miễn phí</a></h3>
-                        <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Xem thêm</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Start single blog post-->
+            }
 
         </div>
         <div class="row">
