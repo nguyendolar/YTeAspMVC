@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="breadcrumb-area" style="background-image: url(~/Content/images//resources/breadcrumb-bg.jpg);">
+<section class="breadcrumb-area" style="background-image: url(/Content/images//resources/breadcrumb-bg.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -16,7 +16,7 @@
                         <ul class="clearfix">
                             <li><a href="index-2.html">Trang chủ</a></li>
                             <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                            <li class="active"></li>
+                            <li class="active">Tin tức</li>
                         </ul>
                     </div>
                 </div>
@@ -49,9 +49,9 @@
                                     <li><a href="#">@String.Format("{0:dd-MM-yyyy}", post.Created)</a></li>
                                 </ul>
                             </div>
-                            <h3 class="blog-title"><a href="">@post.Title</a></h3>
+                            <h3 class="blog-title"><a href="/Post/Detail/@post.IdPost">@post.Title</a></h3>
                             <div class="readmore-button">
-                                <a class="btn-two" href="#"><span class="flaticon-next"></span>Xem thêm</a>
+                                <a class="btn-two" href="/Post/Detail/@post.IdPost"><span class="flaticon-next"></span>Xem thêm</a>
                             </div>
                         </div>
                     </div>

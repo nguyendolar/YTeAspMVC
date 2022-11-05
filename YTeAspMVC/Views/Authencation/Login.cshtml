@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="breadcrumb-area" style="background-image: url(~/Content/images/resources/breadcrumb-bg.jpg);">
+<section class="breadcrumb-area" style="background-image: url(/Content/images/resources/breadcrumb-bg.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -16,7 +16,7 @@
                         <ul class="clearfix">
                             <li><a href="index-2.html">Home</a></li>
                             <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                            <li class="active"></li>
+                            <li class="active">Đăng nhập</li>
                         </ul>
                     </div>
                 </div>
@@ -24,6 +24,22 @@
         </div>
     </div>
 </section>
+@if (ViewBag.mess == "Error")
+{
+
+    <div class="toast" data-delay="1000" style="position:fixed; top: 100PX; left: 10PX;z-index: 2000;width: 300px">
+        <script>
+            swal({
+                title: 'Email hoặc mật khẩu không đúng!',
+                /* text: 'Redirecting...', */
+                icon: 'error',
+                timer: 3000,
+                buttons: true,
+                type: 'success'
+            })
+        </script>
+    </div>
+}
 <!--End breadcrumb area-->
 <!--Start Contact info map area-->
 <!--End Contact info map area-->
@@ -36,14 +52,14 @@
                     <div class="contact-title">
                         <h2>Đăng nhập thành viên</h2>
                     </div>
-                    <form id="contact-form" name="contact_form" class="default-form" action="" method="post">
+                    <form name="contact_form" class="default-form" action="/Authencation/Login" method="post">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-box">
-                                    <input type="email" name="form_email" value="" placeholder="Email*" required>
+                                    <input type="email" class="form-control" name="Email" placeholder="Email*" required>
                                 </div>
                                 <div class="input-box">
-                                    <input type="text" name="form_phone" value="" placeholder="Mật khẩu">
+                                    <input type="text" class="form-control" name="Password" required placeholder="Mật khẩu">
                                 </div>
                             </div>
                             <div class="col-md-6">

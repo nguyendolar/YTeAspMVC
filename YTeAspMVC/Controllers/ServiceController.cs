@@ -9,11 +9,17 @@ namespace YTeAspMVC.Controllers
 {
     public class ServiceController : Controller
     {
-        ServiceDao postDao = new ServiceDao();
+        ServiceDao serviceDao = new ServiceDao();
         // GET: Service
         public ActionResult Index()
         {
-            ViewBag.List = postDao.GetAll();
+            ViewBag.List = serviceDao.GetAll();
+            return View();
+        }
+
+        public ActionResult Detail(int id)
+        {
+            ViewBag.Service = serviceDao.GetService(id);
             return View();
         }
     }

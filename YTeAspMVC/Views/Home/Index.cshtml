@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+@Html.Action("MainSlider", "Modules")
 <section class="welcome-area sec-pd1">
     <div class="container">
         <div class="sec-title max-width text-center">
@@ -142,13 +142,12 @@
                             </div>
                         </div>
                     }
-                        <!--End single item member-->
+                    <!--End single item member-->
+                    <!--End single item member-->
+                    <!--Start single item member-->
+                    <!--End single item member-->
 
-                        <!--End single item member-->
-                        <!--Start single item member-->
-                        <!--End single item member-->
-
-                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -186,17 +185,17 @@
                                     <li><a href="#">@String.Format("{0:dd-MM-yyyy}", service.Created)</a></li>
                                 </ul>
                             </div>
-                            <h3 class="blog-title"><a href="">@service.Name</a></h3>
+                            <h3 class="blog-title"><a href="/Service/Detail/@service.IdService">@service.Name</a></h3>
 
                             <div class="readmore-button">
-                                <a class="btn-two" href="#"><span class="flaticon-next"></span>Xem thêm</a>
+                                <a class="btn-two" href="/Service/Detail/@service.IdService"><span class="flaticon-next"></span>Xem thêm</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--End single blog post-->
             }
-            </div>
+        </div>
     </div>
 </section>
 <!--End latest blog area-->
@@ -212,7 +211,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                     <div class="single-blog-post">
                         <div class="img-holder">
-                            <img src="~/Content/images/@post.Image" style="height : 250px !important"  alt="Awesome Image">
+                            <img src="~/Content/images/@post.Image" style="height : 250px !important" alt="Awesome Image">
                             <div class="categorie-button">
                                 <a class="btn-one" href="#">Tin tức</a>
                             </div>
@@ -227,18 +226,18 @@
                                     <li><a href="#">@String.Format("{0:dd-MM-yyyy}", post.Created)</a></li>
                                 </ul>
                             </div>
-                            <h3 class="blog-title"><a href="">@post.Title</a></h3>
+                            <h3 class="blog-title"><a href="/Post/Detail/@post.IdPost">@post.Title</a></h3>
 
                             <div class="readmore-button">
-                                <a class="btn-two" href="#"><span class="flaticon-next"></span>Xem thêm</a>
+                                <a class="btn-two" href="/Post/Detail/@post.IdPost"><span class="flaticon-next"></span>Xem thêm</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--End single blog post-->
             }
-               
-            </div>
+
+        </div>
     </div>
 </section>
 <!--Start Brand area-->

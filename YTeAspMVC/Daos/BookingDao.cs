@@ -23,7 +23,7 @@ namespace YTeAspMVC.Daos
 
         public List<Booking> GetBookingByDoctor(int idDoctor)
         {
-            return myDb.Bookings.Where(x => x.IdDoctor == idDoctor).ToList();
+            return myDb.Bookings.Where(x => x.IdDoctor == idDoctor && x.Status == 1).ToList();
         }
 
 

@@ -13,11 +13,6 @@ namespace YTeAspMVC.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdNumber { get; set; }
 
-
-        [StringLength(255)]
-        [Required]
-        public string Image { get; set; }
-
         public int NumberInt { get; set; }
 
         public string Day { get; set;  }

@@ -130,6 +130,7 @@
     <Compile Include="Controllers\Admin\AdminAuthenticationController.cs" />
     <Compile Include="Controllers\Admin\AdminHomeController.cs" />
     <Compile Include="Controllers\Admin\AdminModulesController.cs" />
+    <Compile Include="Controllers\Admin\AdminBookingController.cs" />
     <Compile Include="Controllers\Admin\AdminUserController.cs" />
     <Compile Include="Controllers\Admin\AdminPostController.cs" />
     <Compile Include="Controllers\Admin\AdminDoctorController.cs" />
@@ -157,6 +158,10 @@
     <Compile Include="Migrations\202211031129006_up.cs" />
     <Compile Include="Migrations\202211031129006_up.designer.cs">
       <DependentUpon>202211031129006_up.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211051402508_update table number.cs" />
+    <Compile Include="Migrations\202211051402508_update table number.designer.cs">
+      <DependentUpon>202211051402508_update table number.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -1027,6 +1032,14 @@
     <Content Include="Views\AdminPost\Index.cshtml" />
     <Content Include="Views\AdminDoctor\Index.cshtml" />
     <Content Include="Views\AdminUser\Index.cshtml" />
+    <Content Include="Views\AdminBooking\Index.cshtml" />
+    <Content Include="Views\AdminBooking\Doctor.cshtml" />
+    <Content Include="Views\Service\Detail.cshtml" />
+    <Content Include="Views\Post\Detail.cshtml" />
+    <Content Include="Views\Authencation\Information.cshtml" />
+    <Content Include="Views\Authencation\HistoryNumber.cshtml" />
+    <Content Include="Views\Authencation\HistoryBooking.cshtml" />
+    <Content Include="Views\Authencation\Print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1050,6 +1063,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211031129006_up.resx">
       <DependentUpon>202211031129006_up.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211051402508_update table number.resx">
+      <DependentUpon>202211051402508_update table number.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

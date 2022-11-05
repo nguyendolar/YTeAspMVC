@@ -8,26 +8,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Bảng điều khiển
                 </a>
-                <a class="nav-link collapsed" href="/AdminDoctor/Index">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Quản lý bác sĩ
-                </a>
-                <a class="nav-link collapsed" href="/AdminService/Index">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Quản lý dịch vụ
-                </a>
-                <a class="nav-link collapsed" href="/AdminPost/Index">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Quản lý tin tức
-                </a>
-                <a class="nav-link collapsed" href="/AdminUser/Index">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Quản lý người dùng
-                </a>
-                <a class="nav-link collapsed" href="/AdminBooking/Index">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Quản lý lịch hẹn
-                </a>
+
                 @if (userInfomatiom == null)
                 {
                     <a class="nav-link collapsed" href="/AdminBooking/Doctor">
@@ -35,7 +16,29 @@
                         Danh sách lịch hẹn
                     </a>
                 }
-
+                else
+                {
+                    <a class="nav-link collapsed" href="/AdminDoctor/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Quản lý bác sĩ
+                    </a>
+                    <a class="nav-link collapsed" href="/AdminService/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Quản lý dịch vụ
+                    </a>
+                    <a class="nav-link collapsed" href="/AdminPost/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Quản lý tin tức
+                    </a>
+                    <a class="nav-link collapsed" href="/AdminUser/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Quản lý người dùng
+                    </a>
+                    <a class="nav-link collapsed" href="/AdminBooking/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Quản lý lịch hẹn
+                    </a>
+                }
             </div>
         </div>
     </nav>

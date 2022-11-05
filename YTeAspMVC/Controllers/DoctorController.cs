@@ -11,9 +11,10 @@ namespace YTeAspMVC.Controllers
     {
         DoctorDao doctorDao = new DoctorDao();
         // GET: Doctor
-        public ActionResult Index()
+        public ActionResult Index(FormCollection form)
         {
-            ViewBag.List = doctorDao.GetAll();
+            var keyword = form["namedoctor"];
+            ViewBag.List = String.IsNullOrEmpty(keyword) ? doctorDao.GetAll() : doctorDao.Search(keyword);
             return View();
         }
     }

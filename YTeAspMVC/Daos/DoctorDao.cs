@@ -15,6 +15,11 @@ namespace YTeAspMVC.Daos
             return myDb.Doctors.ToList();
         }
 
+        public List<Doctor> Search(string keyword)
+        {
+            return myDb.Doctors.Where(x => x.FullName.Contains(keyword)).ToList();
+        }
+
         public void Add(Doctor doctor)
         {
             myDb.Doctors.Add(doctor);
