@@ -16,8 +16,7 @@ namespace YTeAspMVC.Models
         [StringLength(255)]
         public string Day { get; set; }
 
-        [StringLength(255)]
-        public string Time { get; set; }
+        public int Time { get; set; }
 
         [StringLength(255)]
         public string Reason { get; set; }

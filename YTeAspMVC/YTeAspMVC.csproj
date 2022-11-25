@@ -163,6 +163,10 @@
     <Compile Include="Migrations\202211051402508_update table number.designer.cs">
       <DependentUpon>202211051402508_update table number.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211250523371_update column Time.cs" />
+    <Compile Include="Migrations\202211250523371_update column Time.designer.cs">
+      <DependentUpon>202211250523371_update column Time.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Doctor.cs" />
@@ -1066,6 +1070,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211051402508_update table number.resx">
       <DependentUpon>202211051402508_update table number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211250523371_update column Time.resx">
+      <DependentUpon>202211250523371_update column Time.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

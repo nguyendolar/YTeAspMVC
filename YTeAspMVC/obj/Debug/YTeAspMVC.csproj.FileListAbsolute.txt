@@ -85,3 +85,4 @@ D:\.NET MVC\YTeAspMVC\YTeAspMVC\obj\Debug\YTeAspMVC.Migrations.newdatabase.resou
 D:\.NET MVC\YTeAspMVC\YTeAspMVC\obj\Debug\YTeAspMVC.csproj.GenerateResource.cache
 D:\.NET MVC\YTeAspMVC\YTeAspMVC\obj\Debug\YTeAspMVC.Migrations.up.resources
 D:\.NET MVC\YTeAspMVC\YTeAspMVC\obj\Debug\YTeAspMVC.Migrations.updatetablenumber.resources
+D:\.NET MVC\YTeAspMVC\YTeAspMVC\obj\Debug\YTeAspMVC.Migrations.updatecolumnTime.resources
