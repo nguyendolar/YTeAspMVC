@@ -16,9 +16,38 @@ namespace YTeAspMVC.Daos
             return myDb.Numbers.Where(x => x.IdUser == id).OrderByDescending(x => x.IdNumber).ToList();
         }
 
+
+
         public Number GetById(int id)
         {
             return myDb.Numbers.FirstOrDefault(x => x.IdNumber == id);
+        }
+
+
+
+        public void Add(Number number)
+        {
+            myDb.Numbers.Add(number);
+            myDb.SaveChanges();
+        }
+
+
+
+        public int GetNumberToday()
+        {
+            string date = DateTime.Now.Date.ToString();
+            var numberOfDay = myDb.Numbers.Where(x => x.Day.Equals(date)).OrderByDescending(x => x.NumberInt).ToList();
+            if (numberOfDay.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return numberOfDay.FirstOrDefault().NumberInt;
+            }
+
+
+
         }
     }
 }

@@ -95,7 +95,7 @@
                                     <div class="modal-body">
                                         Lịch hẹn của người dùng : @item.User.FullName với Bác sĩ : @item.Doctor.FullName
                                         <form action="/AdminBooking/Approve" method="post">
-                                            <input type="hidden" class="form-control" id="id" name="idContract" value="@item.IdBooking">
+                                            <input type="hidden" class="form-control" id="id" name="idBooking" value="@item.IdBooking">
                                             <div class="modal-footer" style="margin-top: 20px">
                                                 <button style="width:100px" type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">

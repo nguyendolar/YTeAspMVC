@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using YTeAspMVC.Daos;
+using YTeAspMVC.Models;
 
 namespace YTeAspMVC.Controllers
 {
@@ -18,6 +19,21 @@ namespace YTeAspMVC.Controllers
             ViewBag.Service = serviceDao.GetTop3();
             ViewBag.Post = postDao.GetTop3();
             return View();
+        }
+
+        public ActionResult Advise()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Advise(Advise advise)
+        {
+
+            advise.Created = DateTime.Now.ToString();
+            postDao.AddAdvise(advise);
+            ViewBag.Msg = "1";
+            return View("Advise");
         }
 
         public ActionResult About()

@@ -1,4 +1,5 @@
 ﻿<section class="main-slider">
+    @{ var userInfomatiom = (YTeAspMVC.Models.User)Session["USER"]; }
     <div class="rev_slider_wrapper fullwidthbanner-container" id="rev_slider_two_wrapper" data-source="gallery">
         <div class="rev_slider fullwidthabanner" id="rev_slider_two" data-version="5.4.1">
             <ul>
@@ -69,7 +70,14 @@
                          style="z-index: 7; white-space: nowrap;">
                         <div class="slide-content left-slide">
                             <div class="btn-box">
-                                <a class="btn-one" href="#">Bốc số online</a>
+                                @if (userInfomatiom != null)
+                                {
+                                    <a class="btn-one" href="/Authencation/NumberOnline">Bốc số online</a>
+                                }
+                                else
+                                {
+                                    <a class="btn-one" href="/Authencation/Login">Bốc số online</a>
+                                }
                             </div>
                         </div>
                     </div>

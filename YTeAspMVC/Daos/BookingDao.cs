@@ -16,6 +16,13 @@ namespace YTeAspMVC.Daos
             myDb.SaveChanges();
         }
 
+        public void delete(int idBooking)
+        {
+            var booking = myDb.Bookings.FirstOrDefault(x => x.IdBooking == idBooking);
+            myDb.Bookings.Remove(booking);
+            myDb.SaveChanges();
+        }
+
         public List<Booking> GetBookingByUser(int idUser)
         {
             return myDb.Bookings.Where(x => x.IdUser == idUser).ToList();
@@ -42,6 +49,47 @@ namespace YTeAspMVC.Daos
             var obj = myDb.Bookings.FirstOrDefault(x => x.IdBooking == id);
             obj.Status = 1;
             myDb.SaveChanges();
+        }
+
+        public int CheckNumberInDay(string day)
+        {
+            return myDb.Bookings.Where(x => x.Day.Equals(day)).ToList().Count;
+        }
+
+
+
+        public List<int> GetHourInDay(string day, int currentHour)
+        {
+            List<int> arrHours = new List<int>();
+            for (int i = currentHour + 1; i < 18; i++)
+            {
+                arrHours.Add(i);
+            }
+            var bookings  = myDb.Bookings.Where(x => x.Day.Equals(day)).ToList();
+            for(int i = 0; i < bookings.Count; i++)
+            {
+                for (int j = 0; j < arrHours.Count; j++)
+                {             
+                    if (bookings[i].Time == arrHours[j])
+                    {
+                        arrHours.RemoveAt(j);
+                    }
+                }
+            }
+            return arrHours;
+        }
+
+
+
+        public bool CheckExistScheduleInDay(string day, int hour, int userId,int doctorId)
+        {
+            var bookings = myDb.Bookings.Where(x => x.Day.Equals(day) && x.Time == hour && x.IdUser == userId && x.IdDoctor == doctorId).ToList();
+            if (bookings.Count < 6)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

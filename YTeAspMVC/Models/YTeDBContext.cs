@@ -24,6 +24,7 @@ namespace YTeAspMVC.Models
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Number> Numbers { get; set; }
+        public DbSet<Advise> Advises { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 

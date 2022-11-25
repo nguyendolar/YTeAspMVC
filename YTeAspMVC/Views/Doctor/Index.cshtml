@@ -24,6 +24,38 @@
         </div>
     </div>
 </section>
+@if (ViewBag.Msg == "1")
+{
+
+    <div class="toast" data-delay="1000" style="position:fixed; top: 100PX; left: 10PX;z-index: 2000;width: 300px">
+        <script>
+            swal({
+                title: 'Đặt lịch thành công',
+                /* text: 'Redirecting...', */
+                icon: 'success',
+                timer: 3000,
+                buttons: true,
+                type: 'success'
+            })
+        </script>
+    </div>
+}
+@if (ViewBag.Msg == "2")
+{
+
+    <div class="toast" data-delay="1000" style="position:fixed; top: 100PX; left: 10PX;z-index: 2000;width: 300px">
+        <script>
+            swal({
+                title: 'Đặt lịch không thành công',
+                /* text: 'Redirecting...', */
+                icon: 'error',
+                timer: 3000,
+                buttons: true,
+                type: 'error'
+            })
+        </script>
+    </div>
+}
 <section class="doctor-area">
     <div class="container">
         <div class="row">
@@ -61,68 +93,71 @@
                     <!--End Single Sidebar-->
                     <!--Start Single Sidebar-->
                     @{ var userInfomatiom = (YTeAspMVC.Models.User)Session["USER"]; }
-                <div class="single-sidebar">
-                    <div class="sidebar-appoinment">
-                        <div class="title">
-                            <h3>Đặt lịch hẹn</h3>
-                        </div>
-                        @if (userInfomatiom == null)
-                        {
-                            <div class="row" style="margin : 0px auto !important">
-                                <div class="col-md-12">
-                                    <a class="btn btn-danger" href="/Authencation/Login">Đăng nhập để đặt lịch</a>
-                                </div>
+                    <div class="single-sidebar">
+                        <div class="sidebar-appoinment">
+                            <div class="title">
+                                <h3>Đặt lịch hẹn</h3>
                             </div>
-                        }
-                        else
-                        {
-                            <form class="appoinment-form" action="" method="post">
-                                
-                                <div class="col-md-12">
-                                    <label style="font-weight : bold">Người dùng</label>
-                                    <div class="input-box">
-                                        <input type="text" class="form-control" name="form_name" value="@userInfomatiom.FullName" readonly>
+                            @if (userInfomatiom == null)
+                            {
+                                <div class="row" style="margin : 0px auto !important">
+                                    <div class="col-md-12">
+                                        <a class="btn btn-danger" href="/Authencation/Login">Đăng nhập để đặt lịch</a>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <label style="font-weight : bold">Bác sĩ</label>
-                                    <div class="input-box">
-                                        <select class="form-control">
-                                            <option selected value="">-- Chọn bác sĩ --</option>
-                                            @foreach (var item in ViewBag.List)
-                                            {
-                                                <option value="@item.IdDoctor">@item.FullName</option>
-                                            }
-                                        </select>
+                            }
+                            else
+                            {
+                                <form class="appoinment-form" action="/Booking/Add" method="post">
+
+                                    <div class="col-md-12">
+                                        <label style="font-weight : bold">Người dùng</label>
+                                        <div class="input-box">
+                                            <input type="text" class="form-control" name="form_name" value="@userInfomatiom.FullName" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <label style="font-weight : bold">Thời gian</label>
-                                    <div class="input-box">
-                                        <input type="time" class="form-control" name="Time" required>
+                                    <div class="col-md-12">
+                                        <label style="font-weight : bold">Bác sĩ</label>
+                                        <div class="input-box">
+                                            <select id="IdDoctor" name="IdDoctor" class="form-control">
+                                                <option selected value="">-- Chọn bác sĩ --</option>
+                                                @foreach (var item in ViewBag.List)
+                                                {
+                                                    <option value="@item.IdDoctor">@item.FullName</option>
+                                                }
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <label style="font-weight : bold">Ngày</label>
-                                    <div class="input-box">
-                                        <input type="date" name="date" class="form-control"  required>
+                                    <div class="col-md-12">
+                                        <label style="font-weight : bold">Ngày</label>
+                                        <div class="input-box">
+                                            <input type="date" name="Day" min="@ViewBag.CurrentDate" id="dateStr" onchange="validateToday()" class="form-control" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <label style="font-weight : bold">Lý do sức khỏe</label>
-                                    <div class="input-box">
-                                        <textarea name="form_message" class="form-control" placeholder="Nhập lý do ..." required></textarea>
+                                    <div class="col-md-12">
+                                        <label style="font-weight : bold">Thời gian</label>
+                                        <div class="input-box" id="TimeStr">
+                                            <select name="Time" class="form-control">
+                                                <option selected value="">-- Chọn giờ --</option>
+
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-12">
+                                        <label style="font-weight : bold">Lý do sức khỏe</label>
+                                        <div class="input-box">
+                                            <textarea name="Reason" class="form-control" placeholder="Nhập lý do ..." required></textarea>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <button class="btn-one" type="submit">Đặt lịch</button>
                                         </div>
                                     </div>
-                            </form>
-                    }
+                                </form>
+                            }
 
-                    </div>
+                        </div>
                     </div>
                     <!--End Single Sidebar-->
                 </div>
@@ -137,13 +172,13 @@
                                 <div class="col-xl-5">
                                     <div class="img-holder">
                                         <img src="~/Content/images/@doctor.Image" alt="Awesome Image">
-                                        <div class="overlay">
-                                            <div class="box">
-                                                <div class="content">
+                                        <!--<div class="overlay">
+                                            <div class="box">-->
+                                              @*  <div class="content">
                                                     <a class="btn-one" href="#">Đặt Lịch</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                </div>*@
+                                            <!--</div>
+                                        </div>-->
                                     </div>
                                 </div>
                                 <div class="col-xl-7">
@@ -165,5 +200,79 @@
             </div>
         </div>
     </div>
+    <script>
+        function validateToday() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+            today = yyyy + '-' + mm + '-' + dd;
+            var dateStr = $("#dateStr").val();
+            if (dateStr.toString() == today) {
+                var data = {
+                    day: dateStr.toString(),
+                    type: "InDay"
+                }
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/Booking/ValidateInDay",
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    cache: false,
+                    success: function (t) {
+                        if (t.Status == true) {
+                            var htmlData = `<select name="Time" id="TimeStr" class="form-control">
+                                        <option selected value="">-- Chọn giờ --</option>`
+                            console.log(t.Hours.length)
+                            for (var i = 0; i < t.Hours.length; i++) {
+                                htmlData += `<option value="` + t.Hours[i] + `">` + t.Hours[i] + `</option>`;
+                            }
+                            htmlData += `</select>`
+                            $("#TimeStr").html(htmlData);
+                        } else {
+                            alert(t)
+                        }
+                    },
+                    error: function (e) {
+                        alert(e)
+                    }
+                });
+            } else {
+                var data1 = {
+                    datt: dateStr.toString(),
+                    type: "NotInDay"
+                }
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/Booking/ValidateInDay",
+                    data: JSON.stringify(data1),
+                    dataType: 'json',
+                    cache: false,
+                    success: function (t) {
+                        if (t.Status == true) {
+                            var htmlData = `<select name="Time" id="TimeStr" class="form-control">
+                                        <option selected value="">-- Chọn giờ --</option>`
+                            console.log(t.Hours.length)
+                            for (var i = 0; i < t.Hours.length; i++) {
+                                htmlData += `<option value="` + t.Hours[i] + `">` + t.Hours[i] + `</option>`;
+                            }
+                            htmlData += `</select>`
+                            $("#TimeStr").html(htmlData);
+                        } else {
+                            alert(t)
+                        }
+                    },
+                    error: function (e) {
+                        alert(e)
+                    }
+                });
+            }
+
+
+
+        }
+    </script>
 </section>
 

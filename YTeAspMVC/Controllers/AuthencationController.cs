@@ -12,9 +12,10 @@ namespace YTeAspMVC.Controllers
     {
         UserDao userDao = new UserDao();
         NumberDao numberDao = new NumberDao();
+        BookingDao bookingDao = new BookingDao();
         // GET: Authencation
         public ActionResult Login()
-        {
+        {          
             return View();
         }
 
@@ -44,8 +45,11 @@ namespace YTeAspMVC.Controllers
             return View();
         }
 
-        public ActionResult HistoryBooking()
+        public ActionResult HistoryBooking(string mess)
         {
+            User user = (User)Session["USER"];
+            ViewBag.Msg = mess;
+            ViewBag.List = bookingDao.GetBookingByUser(user.IdUser);
             return View();
         }
 
@@ -98,6 +102,21 @@ namespace YTeAspMVC.Controllers
         {
             Session.Remove("User");
             return Redirect("/Home/Index");
+        }
+
+        [HttpGet]
+        public ActionResult NumberOnline()
+        {
+            User user = (User)Session["USER"];
+            int numberInt = numberDao.GetNumberToday();
+            var numberAdd = new Number()
+            {
+                NumberInt = numberInt + 1,
+                Day = DateTime.Now.Date.ToString(),
+                IdUser = user.IdUser
+            };
+            numberDao.Add(numberAdd);
+            return RedirectToAction("HistoryNumber", "Authencation", new { mess = "1" });
         }
     }
 }

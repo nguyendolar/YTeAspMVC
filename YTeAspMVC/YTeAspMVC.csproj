@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin\AdminAuthenticationController.cs" />
+    <Compile Include="Controllers\Admin\AdminAdviseController.cs" />
     <Compile Include="Controllers\Admin\AdminHomeController.cs" />
     <Compile Include="Controllers\Admin\AdminModulesController.cs" />
     <Compile Include="Controllers\Admin\AdminBookingController.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Controllers\Admin\AdminDoctorController.cs" />
     <Compile Include="Controllers\Admin\AdminServiceController.cs" />
     <Compile Include="Controllers\AuthencationController.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
@@ -167,16 +169,22 @@
     <Compile Include="Migrations\202211250523371_update column Time.designer.cs">
       <DependentUpon>202211250523371_update column Time.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211250819311_up1.cs" />
+    <Compile Include="Migrations\202211250819311_up1.designer.cs">
+      <DependentUpon>202211250819311_up1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Number.cs" />
+    <Compile Include="Models\Advise.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\YTeDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\AjaxRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\assets\demo\chart-area-demo.js" />
@@ -1044,6 +1052,9 @@
     <Content Include="Views\Authencation\HistoryNumber.cshtml" />
     <Content Include="Views\Authencation\HistoryBooking.cshtml" />
     <Content Include="Views\Authencation\Print.cshtml" />
+    <Content Include="Views\Booking\Index.cshtml" />
+    <Content Include="Views\Home\Advise.cshtml" />
+    <Content Include="Views\AdminAdvise\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1073,6 +1084,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211250523371_update column Time.resx">
       <DependentUpon>202211250523371_update column Time.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211250819311_up1.resx">
+      <DependentUpon>202211250819311_up1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

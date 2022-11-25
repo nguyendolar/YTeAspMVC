@@ -26,6 +26,22 @@ namespace YTeAspMVC.Daos
             myDb.SaveChanges();
         }
 
+        public void AddAdvise(Advise advise)
+        {
+            myDb.Advises.Add(advise);
+            myDb.SaveChanges();
+        }
+
+        public List<Advise> GetAdvise()
+        {
+            return myDb.Advises.OrderByDescending(x => x.IdAdvise).ToList();
+        }
+
+        public Advise GetAdviseDetail(int id)
+        {
+            return myDb.Advises.FirstOrDefault(x => x.IdAdvise == id);
+        }
+
         public void Update(Post post)
         {
             var obj = myDb.Posts.FirstOrDefault(x => x.IdPost == post.IdPost);
