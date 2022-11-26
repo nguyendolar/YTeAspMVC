@@ -1,8 +1,26 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@Html.Action("MainSlider", "Modules")
+@Html.Action("MainSlider", "Modules");
+
+
 <section class="welcome-area sec-pd1">
+    @if(ViewBag.Msg != null && ViewBag.Msg == "2")
+    {
+    <div class="toast" data-delay="1000" style="position:fixed; top: 100PX; left: 40PX;z-index: 2000;width: 300px">
+
+        <script>
+            swal({
+                title: 'Bạn đã lấy số cho ngày hôm nay rồi!',
+                /* text: 'Redirecting...', */
+                icon: 'error',
+                timer: 3000,
+                buttons: true,
+                type: 'error'
+            })
+        </script>
+    </div>
+    }
     <div class="container">
         <div class="sec-title max-width text-center">
             <h1>Website Y Tế</h1>
@@ -271,3 +289,25 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/Home/RemoveNumberOnline",
+            data: null,
+            dataType: 'json',
+            cache: false,
+            success: function (t) {
+                if (t.Status == true) {
+                    console.log("success")
+                } else {
+                    console.log("error")
+                }
+            },
+            error: function (e) {
+                console.log("error")
+            }
+        });
+    });
+</script>

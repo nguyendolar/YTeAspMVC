@@ -30,7 +30,12 @@ namespace YTeAspMVC.Daos
             myDb.Numbers.Add(number);
             myDb.SaveChanges();
         }
-
+        public void Remove(int numberId)
+        {
+            var number = myDb.Numbers.FirstOrDefault(x => x.IdNumber == numberId);
+            myDb.Numbers.Remove(number);
+            myDb.SaveChanges();
+        }
 
 
         public int GetNumberToday()
@@ -48,6 +53,22 @@ namespace YTeAspMVC.Daos
 
 
 
+        }
+
+        public bool CheckUserNumberDay(int userId)
+        {
+            string date = DateTime.Now.Date.ToString();
+            var numberOfDay = myDb.Numbers.FirstOrDefault(x => x.Day.Equals(date) && x.IdUser == userId);
+            if (numberOfDay == null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public List<Number> GetNumber()
+        {
+            return myDb.Numbers.ToList();
         }
     }
 }

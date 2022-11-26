@@ -17,6 +17,7 @@ namespace YTeAspMVC.Controllers
             ViewBag.CurrentDate = aDateTime.Year + "-" + aDateTime.Month + "-" + aDateTime.Day;
             var keyword = form["namedoctor"];
             ViewBag.List = String.IsNullOrEmpty(keyword) ? doctorDao.GetAll() : doctorDao.Search(keyword);
+            Session.Add("Active", "Doctor");
             return View();
         }
     }

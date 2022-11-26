@@ -59,5 +59,6 @@ namespace YTeAspMVC.Controllers
             bookingDao.delete(id);
             return RedirectToAction("HistoryBooking", "Authencation", new { mess = "3" });
         }
+       
     }
 }

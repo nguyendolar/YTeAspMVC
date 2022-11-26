@@ -15,12 +15,14 @@ namespace YTeAspMVC.Controllers
         BookingDao bookingDao = new BookingDao();
         // GET: Authencation
         public ActionResult Login()
-        {          
+        {
+            Session.Add("Active", "Login");
             return View();
         }
 
         public ActionResult Singup()
         {
+            Session.Add("Active", "Singup");
             return View();
         }
 
@@ -108,15 +110,23 @@ namespace YTeAspMVC.Controllers
         public ActionResult NumberOnline()
         {
             User user = (User)Session["USER"];
-            int numberInt = numberDao.GetNumberToday();
-            var numberAdd = new Number()
+            bool check = numberDao.CheckUserNumberDay(user.IdUser);
+            if (!check)
             {
-                NumberInt = numberInt + 1,
-                Day = DateTime.Now.Date.ToString(),
-                IdUser = user.IdUser
-            };
-            numberDao.Add(numberAdd);
-            return RedirectToAction("HistoryNumber", "Authencation", new { mess = "1" });
+                return RedirectToAction("Index", "Home", new { mess = "2" });
+            }
+            else {
+                int numberInt = numberDao.GetNumberToday();
+                var numberAdd = new Number()
+                {
+                    NumberInt = numberInt + 1,
+                    Day = DateTime.Now.Date.ToString(),
+                    IdUser = user.IdUser
+                };
+                numberDao.Add(numberAdd);
+                return RedirectToAction("HistoryNumber", "Authencation", new { mess = "1" });
+            }
+          
         }
     }
 }

@@ -14,6 +14,7 @@ namespace YTeAspMVC.Controllers
         public ActionResult Index()
         {
             ViewBag.List = postDao.GetAll();
+            Session.Add("Active", "New");
             return View();
         }
 

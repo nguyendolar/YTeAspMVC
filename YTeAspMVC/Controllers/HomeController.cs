@@ -13,16 +13,20 @@ namespace YTeAspMVC.Controllers
         DoctorDao doctorDao = new DoctorDao();
         ServiceDao serviceDao = new ServiceDao();
         PostDao postDao = new PostDao();
-        public ActionResult Index()
+        NumberDao numberDao = new NumberDao();
+        public ActionResult Index(string mess)
         {
             ViewBag.Doctor = doctorDao.GetTop3();
             ViewBag.Service = serviceDao.GetTop3();
             ViewBag.Post = postDao.GetTop3();
+            ViewBag.Msg = mess;
+            Session.Add("Active", "Home");
             return View();
         }
 
         public ActionResult Advise()
         {
+            Session.Add("Active", "Advice");
             return View();
         }
 
@@ -48,6 +52,20 @@ namespace YTeAspMVC.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult RemoveNumberOnline()
+        {
+            List<Number> numbers = numberDao.GetNumber();
+            for(int i = 0; i< numbers.Count; i++)
+            {
+                if(DateTime.Now.Date > DateTime.Parse(numbers[i].Day).Date)
+                {
+                    numberDao.Remove(numbers[i].IdNumber);
+                }
+            }
+            return Json(new { Status = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }
