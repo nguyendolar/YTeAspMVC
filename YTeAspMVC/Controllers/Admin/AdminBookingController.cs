@@ -19,9 +19,16 @@ namespace YTeAspMVC.Controllers.Admin
             return View();
         }
 
-        public ActionResult Doctor()
+        public ActionResult History()
+        {
+            ViewBag.List = bookingDao.GetHistory();
+            return View();
+        }
+
+        public ActionResult Doctor(string msg)
         {
             Doctor doctor = (Doctor)Session["DOCTOR"];
+            ViewBag.Msg = msg;
             ViewBag.List = bookingDao.GetBookingByDoctor(doctor.IdDoctor);
             return View();
         }
@@ -30,6 +37,12 @@ namespace YTeAspMVC.Controllers.Admin
         {
             bookingDao.Approve(booking.IdBooking);
             return RedirectToAction("Index", new { msg = "1" });
+        }
+
+        public ActionResult Complete(Booking booking)
+        {
+            bookingDao.Complete(booking.IdBooking);
+            return RedirectToAction("Doctor", new { msg = "1" });
         }
     }
 }

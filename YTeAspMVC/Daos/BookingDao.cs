@@ -36,7 +36,12 @@ namespace YTeAspMVC.Daos
 
         public List<Booking> GetAll()
         {
-            return myDb.Bookings.ToList();
+            return myDb.Bookings.Where(x => x.Status != 2).ToList();
+        }
+
+        public List<Booking> GetHistory()
+        {
+            return myDb.Bookings.Where(x => x.Status == 2).ToList();
         }
 
         public Booking GetDetail(int id)
@@ -48,6 +53,13 @@ namespace YTeAspMVC.Daos
         {
             var obj = myDb.Bookings.FirstOrDefault(x => x.IdBooking == id);
             obj.Status = 1;
+            myDb.SaveChanges();
+        }
+
+        public void Complete(int id)
+        {
+            var obj = myDb.Bookings.FirstOrDefault(x => x.IdBooking == id);
+            obj.Status = 2;
             myDb.SaveChanges();
         }
 

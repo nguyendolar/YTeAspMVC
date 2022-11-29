@@ -1055,6 +1055,7 @@
     <Content Include="Views\Booking\Index.cshtml" />
     <Content Include="Views\Home\Advise.cshtml" />
     <Content Include="Views\AdminAdvise\Index.cshtml" />
+    <Content Include="Views\AdminBooking\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
